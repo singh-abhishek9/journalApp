@@ -1,0 +1,35 @@
+spring:
+  data:
+    mongodb:
+     uri: mongodb+srv://abhisheksingh221667_db_user:zgA8YmuttvXN88qB@cluster0.qozzmhm.mongodb.net/?appName=Cluster0
+     database: journaldb
+     auto-index-creation: true
+  mail:
+    host: smtp.gmail.com
+    port: 465
+    username: abhisheksingh221667@gmail.com
+    password: ntkhvhaxjtbhxrgu
+    properties:
+      mail:
+        smtp:
+          auth: true
+          ssl:
+            enable: true
+            trust: smtp.gmail.com
+          socketFactory:
+            port: 465
+            class: javax.net.ssl.SSLSocketFactory
+            fallback: false
+api:
+  api-key: "7f3f9b4ad6f48c4693e7390dc814d849"
+
+#logging:
+#  level:
+#    com:
+#      springstarter:
+#        journalApp: DEBUG
+#          services:
+#            userService:OFF
+#server:
+#  servlet: 8080
+#    context-path: /journal

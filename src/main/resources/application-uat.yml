@@ -1,0 +1,22 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://abhisheksingh221667_db_user:zgA8YmuttvXN88qB@cluster0.qozzmhm.mongodb.net/?appName=Cluster0
+      database: journaldb
+      auto-index-creation: true
+
+api:
+  apiKey: "0f12ec69e2a27bd320ce36ec560d29c4"
+
+#  profiles:
+#    active:
+#      dev
+#logging:
+#  level:
+#    com:
+#      springstarter:
+#        journalApp: DEBUG
+#          services:
+#            userService:OFF
+#server:
+#  port: 8085
