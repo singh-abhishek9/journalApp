@@ -16,6 +16,6 @@ public class EmailServiceTest {
         EmailService.sendEmail(
                 "abhisheksingh.aimt@gmail.com",
                 "Testing Springboot app",
-                "I hope you are doing well");
+                "I hope you are doing well and working on the springboot project");
     }
 }
