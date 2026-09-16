@@ -20,5 +20,4 @@ public class journalEntry {
     private LocalDateTime date;
     private String title;
     private String content;
-    private Sentiment sentiment;
 }
