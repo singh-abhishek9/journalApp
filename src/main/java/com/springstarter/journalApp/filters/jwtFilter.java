@@ -2,6 +2,7 @@ package com.springstarter.journalApp.filters;
 
 
 import com.springstarter.journalApp.utilities.jwtUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -27,20 +28,24 @@ public class jwtFilter extends OncePerRequestFilter {
     @Autowired
     private jwtUtil jwtUtil;
 
+
     @Override
     protected void doFilterInternal(HttpServletRequest request , HttpServletResponse response , FilterChain chain) throws ServletException, IOException
     {
+
         String authorizationHeader=request.getHeader("Authorization");
         String userName=null;
         String jwt=null;
-        if(authorizationHeader!=null && authorizationHeader.startsWith("Bearer")){
+        if(authorizationHeader!=null && authorizationHeader.startsWith("Bearer ")){
             jwt=authorizationHeader.substring(7);
             userName=jwtUtil.extractUserName(jwt);
         }
         if(userName!=null){
             UserDetails userDetails=userDetailsService.loadUserByUsername(userName);
             if (jwtUtil.validateToken(jwt,userDetails.getUsername())){
-                UsernamePasswordAuthenticationToken auth=new UsernamePasswordAuthenticationToken(userDetails,userDetails.getAuthorities());
+                UsernamePasswordAuthenticationToken auth=new UsernamePasswordAuthenticationToken(
+                        userDetails,null,
+                        userDetails.getAuthorities());
                 auth.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(auth);
             }

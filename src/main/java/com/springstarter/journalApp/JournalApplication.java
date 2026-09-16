@@ -10,6 +10,8 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 @SpringBootApplication
 @EnableTransactionManagement
@@ -31,5 +33,17 @@ public class JournalApplication {
     public MongoTemplate mongoTemplate(MongoDatabaseFactory dbfactory){
         return new MongoTemplate(dbfactory);
     }
-
+    @Bean
+    public WebMvcConfigurer corsConfigurer(){
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**")
+                        .allowedOriginPatterns("http://localhost:5173", "https://localhost:5173", "http://127.0.0.1:5173", "https://127.0.0.1:5173")
+                        .allowedMethods("PUT", "DELETE", "GET", "POST", "OPTIONS", "HEAD")
+                        .allowedHeaders("*")
+                        .allowCredentials(true);
+            }
+        };
+    }
 }
