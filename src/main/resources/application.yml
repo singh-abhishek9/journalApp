@@ -1,14 +1,14 @@
 spring:
   data:
     mongodb:
-     uri: mongodb+srv://abhisheksingh221667_db_user:zgA8YmuttvXN88qB@cluster0.qozzmhm.mongodb.net/?appName=Cluster0
-     database: journaldb
+     uri: ${MONGODB_URI}
+     database: ${MONGODB_DATABASE}
      auto-index-creation: true
   mail:
     host: smtp.gmail.com
     port: 465
     username: abhisheksingh221667@gmail.com
-    password: ntkhvhaxjtbhxrgu
+    password: ${EMAIL_PASSWORD}
     properties:
       mail:
         smtp:
